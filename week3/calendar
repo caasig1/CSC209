@@ -1,0 +1,9 @@
+number=0
+for i in `seq 2000 3000`
+do
+	if cal 2 $i | grep -q '23 24 25 26 27 28 29' >/dev/null
+	then
+		number=`expr $number + 1`
+	fi
+done
+echo $number

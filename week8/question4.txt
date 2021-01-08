@@ -1,0 +1,13 @@
+fork
+	makes 2 of the process
+exec
+wait
+
+2 things
+we do fork, -- one of the new ones is child the old one is parent (parent waits for child) -- same id process as before
+one of the two processes do an exec call
+the other process does wait and loops around to print the next prompt
+
+eg calling ls means shell is parent, ls is the child
+-- wait cos we want ls to complete before doing the next prompt
+

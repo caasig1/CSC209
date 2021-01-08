@@ -1,0 +1,10 @@
+Submit a file named q09 which contains your explanation (in English, not in C) as to why that
+particular file is left empty rather than containing ‘‘hello’’.
+
+The file03 is left empty rather than containing "hello".
+This was along with file10 and file11.
+file10 and file11 are empty because the loop in the helloer.c file only goes from 1 to 9.
+The reason that file03 does not have hello in it is because of the stdin stdout annd stderr.
+Those fd take up 0 1 and 2.
+When we open the filename in buggy.c, the fd is now 3, because the lowest available fd is always assigned first.
+When we dup2 3 onto 3, nothing happens however, when we close the fd 3, since originally it was 3, there is no change and therefore nothing will be written to file03 since fd 3 is now closed.

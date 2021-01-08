@@ -1,0 +1,21 @@
+# Read file(s) or standard input, if none are given, and find the largest numerical value given
+
+# if there are no arguments, read from the standard input
+if test $# -eq 0
+then
+	read input
+	max=`echo $input | tr -cs 0-9 '\012' | sort -r -n | head -n 1`
+
+# otherwise, read from the given file(s)
+else
+	max=`cat "$@" | tr -cs 0-9 '\012' | sort -r -n | head -n 1`
+fi
+
+# check that max is a number and not whitespace
+# if it is whitespace, exit without printing a new line
+if test `echo $max | wc -w` -eq 0
+then
+	exit 0
+else
+	echo $max
+fi

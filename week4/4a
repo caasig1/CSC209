@@ -1,0 +1,2 @@
+try=`expr 12 '*' 12`
+while test `echo $try | ./

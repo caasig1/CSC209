@@ -1,0 +1,2 @@
+have to close the other side of pipe for para.c
+also para.c has to close(1) or dup2()

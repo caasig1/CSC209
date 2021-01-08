@@ -1,0 +1,47 @@
+number=5
+queryloc=/u/csc209h/summer/pub/ex/03/query
+query=`wc -l <$queryloc`
+verbloc=/u/csc209h/summer/pub/ex/03/verb
+verb=`wc -l <$verbloc`
+nounloc=/u/csc209h/summer/pub/ex/03/noun
+noun=`wc -l <$nounloc`
+modifierloc=/u/csc209h/summer/pub/ex/03/modifier
+modifier=`wc -l <$modifierloc`
+for i in `seq 1 $number`
+do
+	string=""
+	for i in query verb string noun modifier
+	do
+		if test $i = "string"
+		then
+			string=`expr $string + "that"`
+		else
+			rng1=`/u/csc209h/summer/pub/ex/03/firstbyte </dev/urandom`
+			l1=`expr $rng1 % $i`
+       			l1=`expr $l1 + 1`
+			loc=${i}loc	
+			q1=`sed -n ${l1}p $loc`
+			string=`expr $string + $q1`
+		fi
+	done
+	echo $string
+
+
+#	rng1=`/u/csc209h/summer/pub/ex/03/firstbyte </dev/urandom`
+#	l1=`expr $rng1 % $query`
+#	l1=`expr $l1 + 1`
+#	q1=`sed -n ${l1}p $queryloc`
+#	rng2=`/u/csc209h/summer/pub/ex/03/firstbyte </dev/urandom`
+ #       l2=`expr $rng2 % $verb`
+#	l2=`expr $l2 + 1`
+ #       q2=`sed -n ${l2}p $verbloc`
+#	rng3=`/u/csc209h/summer/pub/ex/03/firstbyte </dev/urandom`
+ #       l3=`expr $rng3 % $noun`
+  #      l3=`expr $l3 + 1`
+#	q3=`sed -n ${l3}p $nounloc`
+#	rng4=`/u/csc209h/summer/pub/ex/03/firstbyte </dev/urandom`
+ #       l4=`expr $rng4 % $modifier`
+  #      l4=`expr $l4 + 1`
+#	q4=`sed -n ${l4}p $modifierloc`
+#	echo $q1 $q2 that $q3 $q4
+done

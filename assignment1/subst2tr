@@ -1,0 +1,17 @@
+# output a valid input for command tr when a key file is given
+# usage message
+USAGE="usage: subst2tr file"
+if ! [ $# -eq 1 ] || ! cat $1 > /dev/null
+then
+	>&2 echo $USAGE
+	exit 1
+fi
+# concatenate the letters in the from column and the to column together and separately before outputtting them
+fromstring=''
+tostring=''
+while read from to
+do
+	fromstring=$fromstring$from
+	tostring=$tostring$to
+done <$1
+echo "$fromstring $tostring"

@@ -1,0 +1,37 @@
+# loop through each number given and find the number of steps required to get to 1, halving even numbers and 3x+1 to odd numbers.
+# usage message
+USAGE="usage: 3n1size number ..."
+# check the usage of this program: it receives 1 or more numbers as arguments
+if [ $# -eq 0 ]
+then
+	>&2 echo $USAGE
+	exit 1
+fi
+for i in $@
+do
+	if ! [ $i -eq $i ] 2> /dev/null
+	then	
+		>&2 echo $USAGE
+		exit 1
+	fi
+done
+# get each argument and run the 3n1 program while counting the number of steps before they reach 1.
+for i in $@
+do
+	var=`expr $i`
+	count=0
+	# the 3n1 program
+	while [ $var -gt 1 ] 
+	do
+		even=`expr $var % 2`
+		if test $even -eq 0
+		then
+			var=`expr $var / 2`
+		else
+			var=`expr $var \* 3`
+			var=`expr $var + 1`
+		fi
+		count=`expr $count + 1`
+	done
+	echo $count
+done

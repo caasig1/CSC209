@@ -1,0 +1,6 @@
+Let's say we have parent directory and we make a child directory.
+Each time a child directory is created, there is a new link to the parent directory.
+This is because directories :
+(a) refer to themselves trough .
+(b) refer to their parents as .. (or themselves if there is no parent directory, AKA you are at the root)
+For directories like etc, they have many many child directories which means that they have many many links

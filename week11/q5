@@ -1,0 +1,13 @@
+for i in `seq 10`
+do
+    while test -f lockfile
+    do
+	sleep 0.1
+    done
+    touch lockfile
+
+    x=`cat file`
+    expr 1 + $x >file
+
+    rm lockfile
+done

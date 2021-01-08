@@ -1,0 +1,10 @@
+pieces=$1
+from=$2
+to=$3
+extra=$4
+if test $pieces -gt 0
+then
+sh hanoi `expr $pieces - 1` $from $extra $to
+echo move disk $pieces from $from to $to
+sh hanoi `expr $pieces - 1` $extra $to $from
+fi

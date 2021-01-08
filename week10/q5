@@ -1,0 +1,20 @@
+The outer parenths are not needed, multiplication works normally
+Inner (i) is needed since i could be negative and it would eval to -i*5 which would be - (i*5) by mat
+
+
+
+
+Both are necessary:
+twice(2+1) would mess with it -- 4
+(parents around i)
+
+
+!twice(0) -- 1
+-- this is !(0) * 2 which is 1 * 2
+or just division of something with twice
+(parens around everything) 
+
+why not write something much simpler like a method or function????
+function calls // stacks // memory issues? a lot of extra instructions with funcs or methods
+
+nowadays not really an issue but its just for back then and better for constants

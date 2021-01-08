@@ -1,0 +1,19 @@
+Suppose you write a server to respond on port number 1234. When a new connection comes in
+to the computer and is handled by the operating system, how does it know that your process is
+the one the connection should be sent to, and which file descriptor it should be sent on?
+Submit your answer in a file named q10
+
+The operating system uses sockets in order to send and receive connections.
+For servers, a socket must be set up so that it can listen for any incoming activity.
+Once it is created, it is bound uing the 'bind' function to bind it to a port number, in this case it is 1234.
+Once it is bound, we have to call listen on it, where it listens for the connections that come in.
+The connections that come in tell the listening fd while their own information is stored into the backlog that is created.
+Then comes the accept function which accepts the connections, once listen determines that something is trying to connect.
+It is here that a new socket is used to communicate between itself and the client. The fd number that is set, is the return number of the accept call.
+
+For instance, when I connect to teach.cs, lets say I have fd 1. Then the server will send its signals to me through fd 1 and I will receive them here, also through fd 1.
+(I know fd 1 is stdout but its just an example)
+
+So, overall:
+It knows the fd is the correct connection to be sent to since my fd is set when I was accepted through its accept call (via the returned integer of the accept call).
+The file descriptor it will be sent on is the one that accept returns when my connection is accepted.

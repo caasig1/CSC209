@@ -1,0 +1,7 @@
+This works for all files, although it may mess with other parts of the code, if more were written.
+When a string of longer than 50, in this case, is entered, it gets stored into a char array of 50, however, variables can accecss var[51].
+This is because the c program stores arrays as pointers. By calling var[51], we are effectively sayins "Whatever is stored in the address of var + 51*(type of var)
+For characters, the type of var is size 1 byte so it would just be var + 51.
+If, let's say we enter an input of length 50, and the 51th index (not in the 'array' contained an e, for example, we would get the string back with an e on the end, since the string only detects end of string at '\0'
+In this case, we read and store the values one after the other so, for strings longer than 50, we know that immediately after the fgets, var[51] and var[52] ... would still contain what we want, which is the string.
+In this case, it doesnt matter however, this is a poor way to implement this, since it could overwrite other variables or other needed objects elsewhere in the code
